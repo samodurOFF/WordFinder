@@ -1,28 +1,37 @@
-# Word Finder Program
 
-This program helps you search for words in a given word list file based on specified criteria such as length, excluded letters, and constraints on letter positions.
+# Word Finder
+
+## Description
+This program searches for words in a given file based on specific filtering criteria. It allows users to filter words by length, excluded letters, included letters with specific indices, and included letters with excluded indices.
 
 ## Features
-
-- **Filter by word length:** Search for words of a specific length.
-- **Exclude letters:** Eliminate words containing specific letters.
-- **Include letters with constraints:** Find words that must contain specific letters but not at certain indices.
-- **Exact letter placement:** Find words with specific letters at exact indices.
+- Filter words based on length.
+- Exclude words containing specific letters.
+- Include words with specific letters at specific positions.
+- Exclude words with specific letters at certain positions.
 
 ## Usage
+Run the program from the command line with the following arguments:
 
-### Requirements
+### Required Arguments:
+1. `file` - Path to the file containing a list of words.
+2. `length` - Desired length of the words.
 
-- Python 3.6 or later
+### Optional Arguments:
+- `--not_contain` or `-nc` - Letters that should not be present in the word.
+- `--contain_displace` or `-cd` - Letters that must be present but cannot be at specific indices. Format: `<char><i>` (e.g., `a0` for 'a' cannot be at index 0).
+- `--contain` or `-c` - Letters that must be present at specific indices. Format: `<char><i>` (e.g., `b2` for 'b' at index 2).
 
-### Installation
-
-1. Clone this repository or copy the program file to your local machine.
-2. Ensure you have a word list file (e.g., `words.txt`) formatted as one word per line.
-
-### Command-Line Interface
-
-Run the program using the following command:
-
+### Example Command:
 ```bash
-python word_finder.py <file> <length> [--not_contain <letters>] [--contain_displace <char><index>] [--contain <char><index>]
+python script.py .txt 5 -nc xyz -cd 'a0 b1' -c 'c2 d3'
+```
+
+## Prerequisites
+- Python 3.x
+- A text file containing the list of words, one word per line.
+
+## How It Works
+1. Reads words from the provided file.
+2. Filters words based on the specified criteria.
+3. Outputs the filtered list of words.
