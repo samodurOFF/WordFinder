@@ -19,7 +19,6 @@ def filter_contain(word, contain):
 
 #
 def find_word(file_name, length, not_contain='', contain_displace='', contain=''):
-    print(file_name, length, not_contain, contain_displace, contain)
     with open(file_name, 'r', encoding='utf-8') as file:
         dropout = (word.lower() for word in file.read().split('\n') if len(word) == length)
 
@@ -28,7 +27,7 @@ def find_word(file_name, length, not_contain='', contain_displace='', contain=''
     for char, *i in contain_displace.split():
         contain_displace_dict[char].append(int(''.join(i)))
 
-    contain_dict = {int(''.join(i)): char  for char, *i in contain.split()}
+    contain_dict = {int(''.join(i)): char for char, *i in contain.split()}
 
     dropout = [*filter(lambda word: set(word).issuperset(set(contain_displace_dict)), dropout)]
     dropout = [*filter(lambda word: set(word).isdisjoint(set(not_contain)), dropout)]
@@ -51,6 +50,4 @@ def main():
 
 
 if __name__ == '__main__':
-    # find_word('english.txt', 5,  'own','e3 r4', '')
     main()
-
