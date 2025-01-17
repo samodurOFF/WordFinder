@@ -23647,6 +23647,7 @@ lambda
 lambdas
 lambert
 lambs
+lambo
 lame
 lamed
 lamely
